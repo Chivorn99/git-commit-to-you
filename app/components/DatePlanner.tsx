@@ -36,13 +36,22 @@ export default function DatePlanner({ onComplete }: { onComplete: () => void }) 
     if (step < 3) {
       setStep(step + 1);
     } else {
-      // Finish Order -> Show Receipt (Step 4)
+      // Finish Order
       setLoading(true);
+
+      // --- NEW: Send Notification ---
+      fetch("/api/telegram", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(selections),
+      });
+      // -----------------------------
+
       setTimeout(() => {
         setLoading(false);
-        setStep(4); // <--- JUMP TO RECEIPT STEP
+        setStep(4); // Show Receipt
         confetti({ spread: 100, particleCount: 200, origin: { y: 0.6 } });
-      }, 2000); 
+      }, 2000);
     }
   };
 
