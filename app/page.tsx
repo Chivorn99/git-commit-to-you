@@ -2,7 +2,13 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Heart, Camera, Calendar, Image as ImageIcon, Music, } from "lucide-react";
+import {
+  Heart,
+  Camera,
+  Calendar,
+  Image as ImageIcon,
+  Music,
+} from "lucide-react";
 import confetti from "canvas-confetti";
 import DatePlanner from "./components/DatePlanner";
 import PhotoBooth from "./components/PhotoBooth";
@@ -52,36 +58,90 @@ export default function Home() {
                 Hi Beautiful!
               </h1>
               <p className="text-gray-500 italic">
-                I made this little place just for us. <br /> Our 6-year journey, just a scroll away... 👇
+                I made this little place just for us. <br /> Our 6-year journey,
+                just a scroll away... 👇
               </p>
             </motion.div>
 
-            {/* MEMORIES WITH PHOTOS */}
+            {/* CARD 1: THE BEGINNING */}
             <MemoryCard
-              date="Oct 2020"
-              title="Where it all began"
+              date="2020 • The Beginning"
+              title="First Impression 初次见面"
               emoji="🏫"
-              desc="Six years ago, I didn't know you'd become my everything."
+              desc="Thinking back to 6 years ago... I never thought you'd be my everything. 那时候的你，真的好可爱！"
               direction="left"
-              image="/memories/first-met.jpg"
+              image="/memories/first-met.jpg" // Make sure this file exists!
             />
 
+            {/* CARD 2: THE SPARK */}
             <MemoryCard
-              date="Dec 2025"
-              title="The Butterfly Moment"
+              date="The Spark ✨"
+              title="Crushing on You"
               emoji="🦋"
-              desc="That first month of being officially 'us'. I was so nervous!"
+              desc="Every time you messaged me, my heart went 'badump'. 每次收到你的信息，我都偷偷开心好久。"
               direction="right"
-              image="/memories/date-night.jpg"
+              // If you don't have an image for this one, you can remove the line below
+              image="/memories/crush.jpg"
             />
 
+            {/* CARD 3: OFFICIAL */}
             <MemoryCard
-              date="Jan 2026"
-              title="Our Late Night Talks"
-              emoji="🌙"
-              desc="Staying up till 3 AM just to hear your voice. Worth every second."
+              date="Dec 2025 • Official"
+              title="Finally Us 终于在一起"
+              emoji="💑"
+              desc="The best 'Yes' I ever heard. From friends to lovers. 谢谢你愿意做我的女朋友。"
               direction="left"
+              image="/memories/official.jpg"
+            />
+
+            {/* CARD 4: LATE NIGHTS */}
+            <MemoryCard
+              date="Daily Life"
+              title="Late Night Talks 熬夜聊天"
+              emoji="🌙"
+              desc="Staying up till 3 AM just to hear your voice. 哪怕什么都不说，只要你在就好。You are my safe space."
+              direction="right"
               image="/memories/calls.jpg"
+            />
+
+            {/* CARD 5: SKIING */}
+            <MemoryCard
+              date="Snowy Adventure ❄️"
+              title="Skiing Trip 滑雪日"
+              emoji="⛷️"
+              desc="Remember how many times we fell? 😂 But falling for you was the easiest part. 摔倒也不怕，因为有你拉着我。"
+              direction="left"
+              image="/memories/skiing.jpg"
+            />
+
+            {/* CARD 6: ZIPLINING */}
+            <MemoryCard
+              date="Adrenaline Rush"
+              title="Ziplining 高空滑索"
+              emoji="🌲"
+              desc="Screaming our lungs out but feeling so alive! You were so brave. 哪怕尖叫也要牵着手，飞过丛林！"
+              direction="right"
+              image="/memories/zipline.jpg"
+            />
+
+            {/* CARD 7: BEACH */}
+            <MemoryCard
+              date="Relaxing"
+              title="Beach Day 海边时光"
+              emoji="🏖️"
+              desc="Sun, sand, and you. Nothing beats chilling by the sea with my favorite person. 和你在海边吹风，就是最舒服的时候。"
+              direction="left"
+              image="/memories/beach.jpg"
+            />
+
+            {/* CARD 8: KAMPOT */}
+            <MemoryCard
+              date="Getaway"
+              title="Kampot Trip 贡布之旅"
+              emoji="🛶"
+              desc="Slow life by the river. Eating durian and watching the sunset. 贡布的慢生活，有你在身边真好。"
+              direction="right"
+              image="/memories/kampot.jpg"
             />
 
             {/* THE CHINESE MESSAGE CARD */}
@@ -92,7 +152,10 @@ export default function Home() {
               className="bg-white/80 backdrop-blur-sm p-6 rounded-3xl border-2 border-love-200 text-left space-y-4 shadow-xl relative overflow-hidden"
             >
               {/* Decorative corner heart */}
-              <Heart className="absolute -top-4 -right-4 text-love-100 w-24 h-24 rotate-12" fill="currentColor" />
+              <Heart
+                className="absolute -top-4 -right-4 text-love-100 w-24 h-24 rotate-12"
+                fill="currentColor"
+              />
 
               <div className="relative z-10">
                 <div className="w-full h-56 bg-white rounded-2xl overflow-hidden shadow-inner border-8 border-white -rotate-1 mb-6">
@@ -114,13 +177,18 @@ export default function Home() {
 
                 <p className="text-gray-700 leading-loose font-medium font-cute text-base">
                   我的小仙女 🧚‍♀️🩵，
-                  <br /><br />
+                  <br />
+                  <br />
                   转眼认识六年了，我居然到现在才把你这颗“宝藏” 💎 挖到手！
-                  这五个月以来，你简直就是我生活里的 <strong>YYDS</strong> ☁️，每次看到你，我都觉得甜度爆表 🍬💙。
-                  <br /><br />
-                  虽然我们是“老熟人”了，但在你面前，我依然是那个动不动就心跳加速的“心动男嘉宾” 💓🦋。
-                  谢谢你愿意从最好的朋友变身成我的小祖宗 👑🧊，接下来的日子，我会一直宠着你。
-                  <br /><br />
+                  这五个月以来，你简直就是我生活里的 <strong>YYDS</strong>{" "}
+                  ☁️，每次看到你，我都觉得甜度爆表 🍬💙。
+                  <br />
+                  <br />
+                  虽然我们是“老熟人”了，但在你面前，我依然是那个动不动就心跳加速的“心动男嘉宾”
+                  💓🦋。 谢谢你愿意从最好的朋友变身成我的小祖宗
+                  👑🧊，接下来的日子，我会一直宠着你。
+                  <br />
+                  <br />
                   <span className="font-bold text-love-500 block text-center text-xl mt-6 border-t border-love-100 pt-4">
                     宝贝，情人节快乐，爱你哟！ <br /> 🐻🩵✨
                   </span>
@@ -278,7 +346,14 @@ interface MemoryCardProps {
   image?: string; // New: Optional image path
 }
 
-function MemoryCard({ date, title, desc, emoji, direction, image }: MemoryCardProps) {
+function MemoryCard({
+  date,
+  title,
+  desc,
+  emoji,
+  direction,
+  image,
+}: MemoryCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, x: direction === "left" ? -50 : 50 }}
@@ -291,10 +366,15 @@ function MemoryCard({ date, title, desc, emoji, direction, image }: MemoryCardPr
     >
       {/* The "Vine" Node - The little heart on the timeline */}
       <div className="absolute left-1/2 -translate-x-1/2 top-10 w-4 h-4 bg-love-300 rounded-full border-4 border-white shadow-sm z-10 hidden md:block">
-        <Heart size={8} className="text-white fill-current absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <Heart
+          size={8}
+          className="text-white fill-current absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        />
       </div>
 
-      <div className={`bg-white p-4 rounded-2xl shadow-sm border border-love-100 w-[90%] md:w-[80%] relative z-20`}>
+      <div
+        className={`bg-white p-4 rounded-2xl shadow-sm border border-love-100 w-[90%] md:w-[80%] relative z-20`}
+      >
         {/* Photo Section */}
         {image && (
           <div className="mb-4 overflow-hidden rounded-xl border-4 border-white shadow-md rotate-[-1deg] hover:rotate-0 transition-transform duration-300">
@@ -308,14 +388,18 @@ function MemoryCard({ date, title, desc, emoji, direction, image }: MemoryCardPr
           </div>
         )}
 
-        <div className={`flex gap-3 ${direction === "right" ? "flex-row-reverse" : "flex-row"}`}>
+        <div
+          className={`flex gap-3 ${direction === "right" ? "flex-row-reverse" : "flex-row"}`}
+        >
           <div className="text-3xl shrink-0">{emoji}</div>
           <div>
             <span className="text-[10px] font-bold text-love-400 uppercase tracking-widest bg-love-50 px-2 py-0.5 rounded-full">
               {date}
             </span>
             <h3 className="font-bold text-gray-800 text-lg mt-1">{title}</h3>
-            <p className="text-gray-500 text-sm mt-1 leading-relaxed italic">&quot;{desc}&quot;</p>
+            <p className="text-gray-500 text-sm mt-1 leading-relaxed italic">
+              &quot;{desc}&quot;
+            </p>
           </div>
         </div>
       </div>
