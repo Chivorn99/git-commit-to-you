@@ -12,11 +12,13 @@ import {
 import confetti from "canvas-confetti";
 import DatePlanner from "./components/DatePlanner";
 import PhotoBooth from "./components/PhotoBooth";
+import Passcode from "./components/Passcode";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("story"); // 'story' | 'booth' | 'planner'
   const [isHappy, setIsHappy] = useState(false); // Did she say YES?
   const [noBtnPosition, setNoBtnPosition] = useState({ x: 0, y: 0 });
+  const [isLocked, setIsLocked] = useState(true);
 
   // --- LOGIC: The Tricky Button ---
   const moveNoButton = () => {
@@ -39,10 +41,15 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-love-50 pb-24 relative overflow-x-hidden font-sans">
-      {/* -----------------------------------------------------------------
-          TAB 1: OUR STORY (The Scrollable Journey)
-         ----------------------------------------------------------------- */}
-      {activeTab === "story" && (
+      {/* --- THE GATEKEEPER --- */}
+      {isLocked ? (
+        <Passcode onUnlock={() => setIsLocked(false)} />
+      ) : (
+        <>
+          {/* -----------------------------------------------------------------
+              TAB 1: OUR STORY (The Scrollable Journey)
+             ----------------------------------------------------------------- */}
+          {activeTab === "story" && (
         <div className="relative pt-10 px-4 max-w-md mx-auto">
           <div className="flex flex-col gap-16 relative z-10">
             {/* HERO SECTION */}
@@ -91,7 +98,7 @@ export default function Home() {
               emoji="💑"
               desc="The best 'Yes' I ever heard. From friends to lovers. 谢谢你愿意做我的女朋友。"
               direction="left"
-              image="/memories/official.jpg"
+              image="/memories/official1.jpg"
             />
 
             {/* CARD 4: LATE NIGHTS */}
@@ -144,6 +151,36 @@ export default function Home() {
               image="/memories/kampot.jpg"
             />
 
+            {/* MEMORY: Movie Night */}
+            <MemoryCard
+              date="Movie Nights"
+              title="Our Cinema Time 🍿"
+              emoji="🎬"
+              desc="Honestly, I don't even remember the 电影 (movie) plot... I was too busy looking at you. You have that 氛围感 (vibe) that makes every moment feel so 浪漫 (romantic)."
+              direction="left"
+              image="/memories/movie-date.jpg"
+            />
+
+            {/* MEMORY: Food Time */}
+            <MemoryCard
+              date="Always Hungry"
+              title="Our Foodie Adventures 🍜"
+              emoji="🥢"
+              desc="You are my favorite 干饭人 (foodie partner). Whether it's a fancy dinner or just late-night snacks, everything tastes 100x better with you. Seeing you eat happily is my definition of 幸福 (happiness). My little 吃货 (foodie), let's eat everything together forever!"
+              direction="right"
+              image="/memories/food-date.jpg"
+            />
+
+            {/* MEMORY: Cafe Time */}
+            <MemoryCard
+              date="Cafe Hopping"
+              title="Coffee & You ☕"
+              emoji="🍰"
+              desc="Every cafe we visit becomes my favorite spot because you're there. You're the queen of 氛围感 (vibe), and I'm just your private 摄影师 (photographer). I don't need sugar in my 咖啡 (coffee) because you're already 甜度超标 (too sweet). Let's 打卡 (check-in) at every cute cafe in the city together!"
+              direction="left"
+              image="/memories/cafe-date.jpg"
+            />
+
             {/* THE CHINESE MESSAGE CARD */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -158,12 +195,13 @@ export default function Home() {
               />
 
               <div className="relative z-10">
-                <div className="w-full h-56 bg-white rounded-2xl overflow-hidden shadow-inner border-8 border-white -rotate-1 mb-6">
+                {/* Changed h-56 to aspect-[5/4] to match your 2000x1600 image ratio */}
+                <div className="w-full aspect-[5/4] bg-white rounded-2xl overflow-hidden shadow-inner border-8 border-white -rotate-1 mb-6">
                   <Image
-                    src="/memories/us-main.jpg"
+                    src="/memories/us-main.png"
                     alt="My Treasure"
-                    width={400}
-                    height={224}
+                    width={2000} // Updated to your real dimensions
+                    height={1600} // Updated to your real dimensions
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -310,6 +348,8 @@ export default function Home() {
           />
         </div>
       </div>
+        </>
+      )}
     </main>
   );
 }
@@ -391,7 +431,12 @@ function MemoryCard({
         <div
           className={`flex gap-3 ${direction === "right" ? "flex-row-reverse" : "flex-row"}`}
         >
-          <div className="text-3xl shrink-0">{emoji}</div>
+          <motion.div
+            whileHover={{ scale: 1.2, rotate: 10 }}
+            className="text-3xl shrink-0 cursor-default"
+          >
+            {emoji}
+          </motion.div>
           <div>
             <span className="text-[10px] font-bold text-love-400 uppercase tracking-widest bg-love-50 px-2 py-0.5 rounded-full">
               {date}
