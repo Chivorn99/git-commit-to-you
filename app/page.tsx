@@ -148,7 +148,7 @@ export default function Home() {
               emoji="🛶"
               desc="Slow life by the river. Eating durian and watching the sunset. 贡布的慢生活，有你在身边真好。"
               direction="right"
-              image="/memories/kampot.jpg"
+              image="/memories/kampot1.jpg"
             />
 
             {/* MEMORY: Movie Night */}
